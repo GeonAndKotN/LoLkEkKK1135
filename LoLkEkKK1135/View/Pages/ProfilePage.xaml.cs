@@ -1,5 +1,4 @@
-﻿using LoLkEkKK1135.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,28 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LoLkEkKK1135.View
+namespace LoLkEkKK1135.View.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ProductWindow.xaml
+    /// Логика взаимодействия для ProfilePage.xaml
     /// </summary>
-    public partial class ProductWindow : Window
+    public partial class ProfilePage : Page
     {
-        public ProductWindow()
+        public ProfilePage()
         {
             InitializeComponent();
-        }
-
-        private void AddProductInBasket(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void OpenBasketPage(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

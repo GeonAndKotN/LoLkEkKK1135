@@ -1,4 +1,5 @@
 ﻿using LoLkEkKK1135.Model;
+using LoLkEkKK1135.MySQL;
 using LoLkEkKK1135.View;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -25,6 +26,7 @@ namespace LoLkEkKK1135
         public MainWindow()
         {
             InitializeComponent();
+            new MySqlConnect();
         }
 
         private void OpenRegWindow(object sender, RoutedEventArgs e)
@@ -36,7 +38,8 @@ namespace LoLkEkKK1135
 
         private void OpenProductWindow(object sender, RoutedEventArgs e)
         {
-            if (Login.Text == "")
+            Users users = new Users();
+            if (Login.Text == users.Name && string.IsNullOrEmpty(Password.Password))
             {
                 ProductWindow productWindow = new ProductWindow();
                 this.Close();

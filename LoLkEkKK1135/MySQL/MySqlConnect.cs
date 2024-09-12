@@ -13,7 +13,7 @@ namespace LoLkEkKK1135.MySQL
     {
         MySqlConnection mySqlConnection;
 
-        private MySqlConnect()
+        public MySqlConnect()
         {
             MySqlConnectionStringBuilder stringBuilder = new();
             stringBuilder.UserID = "student";
