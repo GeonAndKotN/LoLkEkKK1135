@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,27 +12,14 @@ namespace LoLkEkKK1135.ViewModel
 {
     public class MainVM : BaseVM
     {
-        private Users users = new();
-        public Users SelectedUsers
+        public static List<Users> GetUsers()
         {
-            get => users;
-            set
-            {
-                users = value;
-                Signal();
-            }
+            return MysqlTools.SimpleSelectFromTable<Users>();
         }
 
-        public MainVM()
+        public static List<Products> GetProducts()
         {
-            Users = new ObservableCollection<Users>();
-        }
-
-        public ObservableCollection<Users>? Users { get; set; }
-
-        public MainVM(ObservableCollection<Users>? users)
-        {
-            Users = users;
+            return MysqlTools.SimpleSelectFromTable<Products>();
         }
     }
 }

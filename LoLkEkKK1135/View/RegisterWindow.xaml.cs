@@ -1,4 +1,7 @@
-﻿using LoLkEkKK1135.Model;
+﻿using ConsoleApp47;
+using LoLkEkKK1135.Model;
+using LoLkEkKK1135.MySQL;
+using LoLkEkKK1135.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +26,7 @@ namespace LoLkEkKK1135.View
         public RegisterWindow()
         {
             InitializeComponent();
+            new MySqlConnect();
         }
 
         private void CloseRegWindow(object sender, RoutedEventArgs e)
@@ -34,18 +38,22 @@ namespace LoLkEkKK1135.View
 
         private void RegNewUser(object sender, RoutedEventArgs e)
         {
-            Users users = new Users();
-                if (users.Name.ToString() != Login.Text)
+            List<Users> users = new List<Users>();
+            users = MainVM.GetUsers();
+            foreach (var item in users)
+            {
+                if (item.Name.ToString() != Login.Text)
                 {
-                    users.Name += Login.Text;
-                    
+                    Users uuss = new Users
+                    {
+                        Name = Login.Text,
+                        Password = Password.Text,
+                    };
+                    users.Add(uuss);
+                    return;
                 }
-                else
-                {
-                    MessageBox.Show("Пользователь уже зарегистрирован!");
-                    
-                }
-            
+            }
+            MessageBox.Show("Пользователь уже зарегистрирован!");
         }
     }
 }

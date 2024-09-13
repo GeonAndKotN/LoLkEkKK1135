@@ -1,6 +1,7 @@
 ﻿using LoLkEkKK1135.Model;
 using LoLkEkKK1135.MySQL;
 using LoLkEkKK1135.View;
+using LoLkEkKK1135.ViewModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -38,15 +39,19 @@ namespace LoLkEkKK1135
 
         private void OpenProductWindow(object sender, RoutedEventArgs e)
         {
-            Users users = new Users();
-            if (Login.Text == users.Name && string.IsNullOrEmpty(Password.Password))
+            List<Users> users = new List<Users>();
+            users = MainVM.GetUsers();
+            foreach (var item in users)
             {
-                ProductWindow productWindow = new ProductWindow();
-                this.Close();
-                productWindow.ShowDialog();
+                if (Login.Text == item.Name && Password.Password == item.Password)
+                {
+                    ProductWindow productWindow = new ProductWindow();
+                    this.Close();
+                    productWindow.ShowDialog();
+                    return;
+                }
             }
-            else
-                MessageBox.Show("Неверный Логин или Пароль!");
+            MessageBox.Show("Неверный Логин или Пароль!");
         }
     }
 }

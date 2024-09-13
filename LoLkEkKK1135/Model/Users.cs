@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 namespace LoLkEkKK1135.Model
 {
     [MysqlTable("Users")]
-    public class Users
+    public class Users : BaseModel
     {
-        [MysqlColumn("id")]
-        public int Id { get; set; }
         [MysqlColumn("Name")]
         public string Name { get; set; }
         [MysqlColumn("Password")]
